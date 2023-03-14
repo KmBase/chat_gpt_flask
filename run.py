@@ -7,7 +7,7 @@ from flask import Flask, request
 app = Flask(__name__)
 app.secret_key = 'security-guard'
 
-@app.route('/chat',methods=['post'])
+@app.route('/',methods=['post'])
 def chat():
     data = request.data.decode('utf-8')
     data = json.loads(data)
