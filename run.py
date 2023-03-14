@@ -1,9 +1,10 @@
+import sys
 import requests
 from flask import Flask, request
 
 app = Flask(__name__)
 # app.secret_key = 'security-guard'
-
+{'proxy_url':'https://kmbase.eu.org','api_key':'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','question':'hello'}
 @app.route('/api/count', methods=['POST'])
 def user_api():
     proxy_url = request.json['proxy_url']
