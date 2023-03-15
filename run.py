@@ -7,7 +7,7 @@ from flask import Flask, request
 app = Flask(__name__)
 app.secret_key = 'security-guard'
 
-@app.route('/',methods=['post'])
+@app.route('/chat',methods=['post'])
 def chat():
     data = request.data.decode('utf-8').replace("\'","\"")
     data= json.loads(data)
@@ -18,7 +18,6 @@ def chat():
     # The text prompt you want to generate a response
     # The URL for OpenAI's API
     url = f"{proxy_url}/v1/chat/completions"
-    print(url)
     # The headers for the API request
     headers = {"Content-Type": "application/json","Authorization": f"Bearer {api_key}"}
     data = {"model":"gpt-3.5-turbo","messages": [{"role":"user","content":question}],"max_tokens":800,"temperature":0.5,"frequency_penalty":0,"presence_penalty":0}
@@ -31,7 +30,8 @@ def chat():
         # usage = response.json()['usage']
         # print(generated_text)
         # print(usage)
-        return response
+        res = response.json()
+        return res
     else:
         # Handle the error
         # generated_text = None
