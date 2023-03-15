@@ -10,12 +10,12 @@ app.secret_key = 'security-guard'
 
 @app.route('/chat',methods=['post'])
 def chat():
-    print(request)
     data = request.data.decode('utf-8').replace("\'","\"")
     data= json.loads(data)
-    question = data['question']  # 获取表单数据
-    proxy_url = data['proxy_url']
-    api_key = data['api_key']
+    print(data)
+    question = data['msg']['question']  # 获取表单数据
+    proxy_url = data['msg']['proxy_url']
+    api_key = data['msg']['api_key']
     print(question)
     # The text prompt you want to generate a response
     # The URL for OpenAI's API
@@ -44,5 +44,6 @@ def chat():
 
 # 启动Flask Web服务
 if __name__ == '__main__':
-    server = pywsgi.WSGIServer((sys.argv[1], sys.argv[2]), app)
-    server.serve_forever()
+    app.run()
+    # server = pywsgi.WSGIServer((sys.argv[1], sys.argv[2]), app)
+    # server.serve_forever()
