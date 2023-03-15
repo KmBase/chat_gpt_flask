@@ -31,7 +31,7 @@ def chat():
         usage = response.json()['usage']
         print(generated_text)
         print(usage)
-        return generated_text
+        return generated_text,usage
     else:
         # Handle the error
         generated_text = None
