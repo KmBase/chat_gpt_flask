@@ -1,6 +1,7 @@
 import sys
 import requests
 import flask,json
+from gevent import pywsgi
 
 from flask import Flask, request
 
@@ -43,4 +44,5 @@ def chat():
 
 # 启动Flask Web服务
 if __name__ == '__main__':
-    app.run(host=sys.argv[1], port=sys.argv[2])
+    server = pywsgi.WSGIServer((sys.argv[1], sys.argv[2]), app)
+    server.serve_forever()
