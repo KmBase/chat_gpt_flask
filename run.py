@@ -27,15 +27,15 @@ def chat():
     # Check if the request was successful
     if response.status_code == 200:
         # Extract the generated text from the response
-        generated_text = response.json()['choices'][0]['message']['content']
-        usage = response.json()['usage']
-        print(generated_text)
-        print(usage)
-        return generated_text,usage
+        # generated_text = response.json()['choices'][0]['message']['content']
+        # usage = response.json()['usage']
+        # print(generated_text)
+        # print(usage)
+        return response
     else:
         # Handle the error
-        generated_text = None
-        usage = None
+        # generated_text = None
+        # usage = None
         print(f"Request failed with status code {response.status_code}")
         return None
 
