@@ -44,6 +44,5 @@ def chat():
 
 # 启动Flask Web服务
 if __name__ == '__main__':
-    app.run()
-    # server = pywsgi.WSGIServer((sys.argv[1], sys.argv[2]), app)
-    # server.serve_forever()
+    server = pywsgi.WSGIServer((sys.argv[1], sys.argv[2]), app)
+    server.serve_forever()
