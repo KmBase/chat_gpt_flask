@@ -9,8 +9,8 @@ app.secret_key = 'security-guard'
 
 @app.route('/',methods=['post'])
 def chat():
-    data = request.data.decode('utf-8')
-    data = json.loads(data)
+    data = request.data.decode('utf-8').replace("\'","\"")
+    data= json.loads(data)
     question = data['question']  # 获取表单数据
     proxy_url = data['proxy_url']
     api_key = data['api_key']
@@ -42,4 +42,5 @@ def chat():
 
 # 启动Flask Web服务
 if __name__ == '__main__':
-    app.run(host=sys.argv[1], port=sys.argv[2])
+    # app.run(host=sys.argv[1], port=sys.argv[2])
+    app.run()
