@@ -9,6 +9,7 @@ app.secret_key = 'security-guard'
 
 @app.route('/chat',methods=['post'])
 def chat():
+    print(request)
     data = request.data.decode('utf-8').replace("\'","\"")
     data= json.loads(data)
     question = data['question']  # 获取表单数据
